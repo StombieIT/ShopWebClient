@@ -1,0 +1,98 @@
+.productCard {
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageWrapper > img {
+    align-self: center;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.productCard:hover .imageWrapper > img {
+    transform: scale(1.05);
+}
+
+.percentDiscount {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #F91155;
+    padding: 5px;
+    color: #ffffff;
+}
+
+.description {
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
+
+.priceWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.priceWrapper > * {
+    margin: 5px
+}
+
+.price {
+    background-color: #10C44C;
+    padding: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
+.title {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.description {
+    margin: 5px;
+    color: #747C84;
+}
+
+.button {
+    background-color: #0E6DFD;
+    color: #ffffff;
+    transition: 0.3s;
+    padding: 10px;
+    border-radius: 15px;
+    width: fit-content;
+    margin: 5px;
+    font-weight: 600;
+}
+
+.button:hover {
+    background-color: #0b4fb4;
+}

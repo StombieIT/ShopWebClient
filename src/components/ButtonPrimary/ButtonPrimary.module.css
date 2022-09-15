@@ -1,0 +1,12 @@
+.buttonPrimary {
+    transition: 0.3s;
+    background-color: #0E6DFD;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 15px;
+    width: fit-content;
+}
+
+.buttonPrimary:hover {
+    background-color: #0b4fb4;
+}

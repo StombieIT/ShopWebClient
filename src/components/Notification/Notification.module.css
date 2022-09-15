@@ -1,0 +1,56 @@
+:root {
+    --notification-opacity: 70%;
+}
+
+.notification {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    opacity: var(--notification-opacity);
+    transition: 0.3s;
+}
+
+.notification:hover {
+    opacity: 100%;
+}
+
+.body {
+    color: #000000;
+}
+
+.close {
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+}
+
+.exiting {
+    animation: disappearing 0.3s forwards;
+    animation-timing-function: ease-in;
+}
+
+.entering {
+    animation: disappearing reverse 0.3s ;
+    animation-timing-function: ease-in;
+}
+
+@keyframes disappearing {
+    0% {
+        opacity: var(--notification-opacity);
+        transform: none;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}

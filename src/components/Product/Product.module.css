@@ -1,0 +1,22 @@
+.product {
+    display: grid;
+    grid-template-columns: 400px minmax(400px, 1fr);
+    grid-template-areas: "i b" "c c";
+}
+
+.imageWrapper {
+    grid-area: i;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.imageWrapper > img {
+    height: 100%;
+}
+
+.body {
+    grid-area: b;
+}

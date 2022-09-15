@@ -1,0 +1,45 @@
+.carousel {
+    margin: 20px auto;
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.inner {
+    height: 100%;
+    transition: transform 0.3s;
+    white-space: nowrap;
+}
+
+.imageWrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageWrapper img {
+    width: 100%;
+}
+
+.block {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.entering {
+    opacity: 100%;
+    animation: rotating 1s infinite;
+}
+
+.exited {
+    opacity: 0%;
+}
+
+@keyframes rotating {
+    100% {
+        transform: rotate(360deg);
+        animation-timing-function: linear;
+    }
+}

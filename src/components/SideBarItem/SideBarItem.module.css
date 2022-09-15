@@ -1,0 +1,17 @@
+.sideBarItem {
+    color: #747C84;
+    transition: 0.3s;
+    padding: 10px;
+    margin: 7px;
+    border-radius: 13px;
+}
+
+.sideBarItem:hover {
+    color: #2F2F2F;
+    background-color: #ffffff;
+}
+
+.active {
+    color: #2F2F2F;
+    background-color: #ffffff;
+}

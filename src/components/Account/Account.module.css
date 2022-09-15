@@ -1,0 +1,45 @@
+.account {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 45px 1fr;
+    grid-template-areas: "b1 b2" "b b";
+    background-color: #ffffff;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.body {
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button1 {
+    grid-area: b1;
+}
+
+.button2 {
+    grid-area: b2;
+}
+
+.button {
+    color: #ffffff;
+    background-color: #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0E6DFD
+}
+
+.buttonActive {
+    background-color: #0E6DFD;
+}

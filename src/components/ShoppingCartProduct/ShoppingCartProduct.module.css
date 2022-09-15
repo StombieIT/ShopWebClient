@@ -1,0 +1,123 @@
+.shoppingCartProduct {
+    width: 100%;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 130px 4fr 1fr;
+    grid-template-rows: 130px 1fr;
+    grid-template-areas: "i b p" "f f f";
+    transition: 0.3s;
+}
+
+.shoppingCartProduct:hover {
+    transform: translateY(-5px);
+}
+
+.shoppingCartProduct > * {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.image {
+    grid-area: i;
+    border-right: 2px dashed #0E6DFD;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.imageWrapper > img {
+    height: 100%;
+    position: relative;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.body {
+    grid-area: b;
+    height: 100%;
+}
+
+.description {
+    color: #747C84;
+    width: 100%;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.price {
+    grid-area: p;
+    border-left: 2px dashed #0E6DFD;
+    word-break: break-all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+}
+
+.footer {
+    grid-area: f;
+    border-top: 2px dashed #0E6DFD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.count {
+    margin: 8px;
+}
+
+.counterItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.clickable {
+    background-color: #0E6DFD;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.clickable:hover {
+    background-color: #0b4fb4;
+}
+
+.notClickable {
+    background-color: #c5dcff;
+    color: #ffffff;
+}
+
+.button {
+    padding: 8px;
+    color: #ffffff;
+    transition: 0.3s;
+    background-color: #0E6DFD;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.button:hover {
+    background-color: #0b4fb4;
+}

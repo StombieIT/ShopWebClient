@@ -1,0 +1,13 @@
+.sideBarButton {
+    background-color: #0E6DFD;
+    color: #ffffff;
+    transition: 0.3s;
+    padding: 20px;
+    border-radius: 13px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.sideBarButton:hover {
+    background-color: #0b4fb4;
+}

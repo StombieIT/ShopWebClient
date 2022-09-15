@@ -1,0 +1,45 @@
+.shoppingCartInfo {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block {
+    margin: 5px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+.header {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+    margin: 5px 0;
+}
+
+.list li:not(:first-child) {
+    border-top: 2px dashed #0E6DFD;
+}
+
+.price {
+    color: #10C44C;
+}
+
+.discount {
+    color: #F91155;
+}
+
+.spaceBetweened {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
