@@ -6,6 +6,7 @@ import img2 from "./2.jpg"
 import dio from "./dio.png"
 import { useEffect } from "react"
 import { useRef } from "react"
+import ImageSlider from "../ImageSlider/ImageSlider"
 
 // const Test = ({data = [img1, img2, dio]}) => {
     
@@ -44,23 +45,16 @@ const classes = {
 }
 
 const Test = ({}) => {
-
-    const [isVisible, setIsVisible] = useState(false)
-
-    setTimeout(() => {
-        setIsVisible(true)
-    }, 3000)
-
-    return <Transition in={ isVisible } timeout={3000}>
-        { state => {
-            debugger
-            return <div
-                className={ [styles.block, classes[state]].join(" ") }
-            >
-                Any block
-            </div>
-        }}
-    </Transition>
+    const links = [
+        "https://news1.ru/wp-content/uploads/2021/12/16723_1.jpg",
+        "https://www.imperiasumok.ru/upload/medialibrary/9b8/9b84d2c0c41419c1d733b37630993ae8.jpg",
+        "https://yakutsk.ru/wp-content/uploads/2022/06/18/img_8576-scaled.jpg",
+        "http://uzledy.ru/wp-content/uploads/2021/01/Bread_KringleEar_botany_490838_1920x1200.jpg",
+        "https://famt.ru/wp-content/uploads/2019/05/k-chemu-snitsya-svezhiy-hleb-tolkovanie-snovideniya.jpg"
+    ]
+    return <div style={ {width: "300px"} }>
+        <ImageSlider data={ links.map((l, ix) => ({id: ix, link: l})) } />
+    </div>
 }
 
 export default Test

@@ -11,12 +11,9 @@
     justify-content: center;
     overflow: hidden;
     border-radius: 10px;
+    margin: 5px;
 }
 
 .imageWrapper > img {
     height: 100%;
-}
-
-.body {
-    grid-area: b;
 }

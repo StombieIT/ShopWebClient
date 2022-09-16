@@ -12,6 +12,7 @@ const
     PUSH_PRODUCT_COMMENT = "PUSH_PRODUCT_COMMENT"
 
 const initialState = {
+    inProccess: true,
     comments: {
         page: 0,
         pageItems: []
@@ -117,12 +118,11 @@ export const loadProductCommentsThunk = (dispatch, getState) => {
 
 export const loadProductThunkCreator = productId => dispatch => {
     dispatch(setProductInProccessActionCreator(true))
-    productApi.getProduct(productId)
-        .then(response => {
-            dispatch(toggleProductActionCreator(response.data))
-            dispatch(loadProductCommentsThunk)
-        })
-        .finally(() => dispatch(setProductInProccessActionCreator(false)))
+    productApi
+        .getProduct(productId)
+        .then(response => dispatch(toggleProductActionCreator(response.data)))
+        .then(response => dispatch(loadProductCommentsThunk))
+        .then(response => dispatch(setProductInProccessActionCreator(false)))
 }
 
 export const updateProductCommentThunkCreator = (commentId, text) => dispatch =>

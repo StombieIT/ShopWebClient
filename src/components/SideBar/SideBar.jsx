@@ -17,7 +17,7 @@ const SideBar = () => {
             </SideBarItem>
             <SideBarItem
                 to="/products/1"
-                triggerWhen={ startsWithTriggerCreator("/products") }
+                triggerWhen={ startsWithTriggerCreator("/product") }
             >
                 Товары
             </SideBarItem>

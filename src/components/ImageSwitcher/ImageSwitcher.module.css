@@ -1,0 +1,36 @@
+:root {
+    --wrapper-size: 45px;
+}
+
+.imageSwitcher {
+    width: 100%;
+    overflow: hidden;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageWrapper {
+    margin: 5px;
+    height: var(--wrapper-size);
+    flex: 0 0 var(--wrapper-size);
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 60%;
+    transition: 0.3s;
+}
+
+.image {
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.selected {
+    opacity: 100%;
+}

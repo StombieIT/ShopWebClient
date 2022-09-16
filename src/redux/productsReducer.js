@@ -59,10 +59,16 @@ export const loadProductsThunkCreator = page => (dispatch, getState) => {
         dispatch(setProductsActionCreator(response.data))
         dispatch(setProductsInProccessActionCreator(false))
     })
-    .catch(error => dispatch(addNotificationActionCreator({
-        type: "error",
-        text: "Не удалось загрузить товары"
-    })))
+    .catch(error => {
+        dispatch(addNotificationActionCreator({
+            type: "error",
+            text: "Не удалось загрузить товары"
+        }))
+        dispatch(addNotificationActionCreator({
+            type: "info",
+            text: "Чтобы повторить запрос, обновите страницу"
+        }))
+    })
 }
 
 export const addToShoppingCartThunkCreator = productId => dispatch => {

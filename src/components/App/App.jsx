@@ -3,7 +3,7 @@ import SideBar from "../SideBar/SideBar"
 import {Route, Routes} from "react-router-dom"
 import s from "./App.module.css"
 import Notifications from "../Notifications/Notifications"
-import TestContainer from "../Test/TestContainer"
+import Test from "../Test/Test"
 import Products from "../Products/Products"
 import ShoppingCart from "../ShoppingCart/ShoppingCart"
 import Product from "../Product/Product"
@@ -22,7 +22,7 @@ const App = (props) => {
             <SideBar />
             <Routes>
                 <Route path="/products/:page" element={ <Products /> } />
-                <Route path="/test" element={ <TestContainer /> } />
+                <Route path="/test" element={ <Test /> } />
                 <Route path="/shoppingcart/:page" element={ <ShoppingCart /> } />
                 <Route path="/product/:id" element={ <Product /> } />
                 <Route path="/account/*" element={ <Account /> } />

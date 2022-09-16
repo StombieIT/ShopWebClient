@@ -9,14 +9,13 @@ import {
 } from "../../redux/productReducer"
 import withParams from "../../hocs/withParams"
 import PreLoader from "../PreLoader/PreLoader"
-import s from "./Product.module.css"
+import styles from "./Product.module.css"
 import Comments from "../Comments/Comments"
 import imagePlaceHolder from "./imagePlaceHolder.jpg"
 import ProductDescription from "../ProductDescription/ProductDescription"
+import ImageSlider from "../ImageSlider/ImageSlider"
 
 const Product = ({state, ...props}) => {
-
-    debugger
 
     useEffect(
         () => props.load(props.params.id),
@@ -25,12 +24,18 @@ const Product = ({state, ...props}) => {
 
     if (state.inProccess)
         return <PreLoader styles={ {margin: "0 auto"} } />
-    return <div className={ s.product }>
-        <div className={ s.imageWrapper }>
-            <img src={ state.imageLink ?? imagePlaceHolder } alt={ state.title } />
-        </div>
+    return <div className={ styles.product }>
+        {
+            state.images.length === 0
+            ? <div className={ styles.imageWrapper }>
+                <img src={ imagePlaceHolder } alt="Image" />
+            </div>
+            : <ImageSlider
+                data={ state.images }
+            />
+        }
         <ProductDescription
-            data={ "" }
+            data={ state }
         />
         <Comments
             state={ state.comments }
