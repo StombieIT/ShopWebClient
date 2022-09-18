@@ -1,5 +1,6 @@
 import s from "./ProductCard.module.css"
 import { Link } from "react-router-dom"
+import Star from "../Star/Star"
 import { compose } from "redux"
 import { useNavigate } from "react-router-dom"
 import imagePlaceholder from "./imagePlaceholder.jpg"
@@ -19,7 +20,14 @@ const ProductCard = ({state, ...props}) => {
                     {
                         state.discount
                         && <div className={ s.percentDiscount }>
-                            -{ Math.round(state.discount * 100 / (state.price + state.discount)) }%
+                            -{ (state.discount * 100 / (state.price + state.discount)).toFixed() }%
+                        </div>
+                    }
+                    {
+                        state.rating
+                        && <div className={ s.rating }>
+                            { state.rating.toFixed(2) }
+                            <Star className={ s.ratingImage } />
                         </div>
                     }
                 </div>

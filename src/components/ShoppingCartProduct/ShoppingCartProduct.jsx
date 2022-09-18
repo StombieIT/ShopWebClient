@@ -5,7 +5,7 @@ const ShoppingCartProduct = ({state, ...props}) => {
     return <div className={ s.shoppingCartProduct }>
         <div className={ s.image }>
             <div className={ s.imageWrapper }>
-                <img src={ state.product.imageLink ?? defaultImage } alt={ state.title } />
+                <img src={ state.product.images[0]?.link ?? defaultImage } alt={ state.title } />
             </div>
         </div>
         <div className={ s.body }>
