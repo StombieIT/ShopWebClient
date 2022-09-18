@@ -1,12 +1,7 @@
 import { useState } from "react"
 import { Transition } from "react-transition-group"
 import styles from "./Test.module.css"
-import img1 from "./1.jpeg"
-import img2 from "./2.jpg"
-import dio from "./dio.png"
-import { useEffect } from "react"
-import { useRef } from "react"
-import ImageSlider from "../ImageSlider/ImageSlider"
+import CommentSection from "../CommentSection/CommentSection"
 
 // const Test = ({data = [img1, img2, dio]}) => {
     
@@ -44,16 +39,29 @@ const classes = {
     exited: styles.exited
 }
 
+// const Test = ({}) => {
+//     const links = [
+//         "https://news1.ru/wp-content/uploads/2021/12/16723_1.jpg",
+//         "https://www.imperiasumok.ru/upload/medialibrary/9b8/9b84d2c0c41419c1d733b37630993ae8.jpg",
+//         "https://yakutsk.ru/wp-content/uploads/2022/06/18/img_8576-scaled.jpg",
+//         "http://uzledy.ru/wp-content/uploads/2021/01/Bread_KringleEar_botany_490838_1920x1200.jpg",
+//         "https://famt.ru/wp-content/uploads/2019/05/k-chemu-snitsya-svezhiy-hleb-tolkovanie-snovideniya.jpg"
+//     ]
+//     return <div style={ {width: "300px"} }>
+//         <ImageSlider data={ links.map((l, ix) => ({id: ix, link: l})) } />
+//     </div>
+// }
+
 const Test = ({}) => {
-    const links = [
-        "https://news1.ru/wp-content/uploads/2021/12/16723_1.jpg",
-        "https://www.imperiasumok.ru/upload/medialibrary/9b8/9b84d2c0c41419c1d733b37630993ae8.jpg",
-        "https://yakutsk.ru/wp-content/uploads/2022/06/18/img_8576-scaled.jpg",
-        "http://uzledy.ru/wp-content/uploads/2021/01/Bread_KringleEar_botany_490838_1920x1200.jpg",
-        "https://famt.ru/wp-content/uploads/2019/05/k-chemu-snitsya-svezhiy-hleb-tolkovanie-snovideniya.jpg"
-    ]
-    return <div style={ {width: "300px"} }>
-        <ImageSlider data={ links.map((l, ix) => ({id: ix, link: l})) } />
+    return <div className={ styles.block }>
+        <CommentSection
+            initialValue=""
+            initialRating={ 1 }
+            onSubmit={ (value, rating) => console.log(value, rating) }
+            placeholder="Комментарий"
+            buttonText="Отправить"
+            rollbackOnSubmit
+        />
     </div>
 }
 

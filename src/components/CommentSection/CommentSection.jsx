@@ -1,26 +1,39 @@
 import { useState } from "react"
-import { useRef } from "react"
-import { useEffect } from "react"
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary"
-import styles from "./TextAreaButton.module.css"
+import RatingBar from "../RatingBar/RatingBar"
+import styles from "./CommentSection.module.css"
 
-const TextAreaButton = ({initialValue, onSubmit, children, rollBackOnSubmit, ...props}) => {
+const CommentSection = ({
+    initialValue,
+    onSubmit,
+    rollBackOnSubmit,
+    ratingSize=5,
+    initialRating=ratingSize,
+    buttonText,
+    ...props
+}) => {
     
     const [value, setValue] = useState(initialValue)
+    const [rating, setRating] = useState(initialRating)
 
     const onTextAreaChange = e => {
-        e.preventDefault()
         setValue(e.target.value)
     }
 
     const onButtonClick = e => {
         e.preventDefault()
-        onSubmit(value)
-        if (rollBackOnSubmit)
+        onSubmit({value, rating})
+        if (rollBackOnSubmit) {
+            setRating(initialRating)
             setValue(initialValue)
+        }
     }
 
     return <>
+        <RatingBar
+            rating={ rating }
+            onChange={ newRating => setRating(newRating) }
+        />
         <textarea
             value={ value }
             onChange={ onTextAreaChange }
@@ -31,9 +44,9 @@ const TextAreaButton = ({initialValue, onSubmit, children, rollBackOnSubmit, ...
             style={ {padding: "10px"} }
             onClick={ onButtonClick }
         >
-            { children }
+            { buttonText }
         </ButtonPrimary>
     </>
 }
 
-export default TextAreaButton
+export default CommentSection

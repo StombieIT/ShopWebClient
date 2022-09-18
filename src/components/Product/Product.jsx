@@ -42,7 +42,7 @@ const Product = ({state, ...props}) => {
             onButtonClick={ props.loadComments }
             updateComment={ props.updateComment }
             deleteComment={ props.deleteComment }
-            pushComment={ text => props.pushComment(state.id, text) }
+            pushComment={ ({text, rating}) => props.pushComment({productId: state.id, text, rating}) }
             user={ props.user }
         />
     </div>
@@ -58,9 +58,9 @@ export default compose(
         dispatch => ({
             load: productId => dispatch(loadProductThunkCreator(productId)),
             loadComments: () => dispatch(loadProductCommentsThunk),
-            updateComment: (commentId, text) => dispatch(updateProductCommentThunkCreator(commentId, text)),
+            updateComment: ({commentId, text, rating}) => dispatch(updateProductCommentThunkCreator({commentId, text, rating})),
             deleteComment: commentId => dispatch(deleteProductCommentThunkCreator(commentId)),
-            pushComment: (productId, text) => dispatch(pushProductCommentThunkCreator(productId, text))
+            pushComment: ({productId, text, rating}) => dispatch(pushProductCommentThunkCreator({productId, text, rating}))
         }),
     )
 )(Product)

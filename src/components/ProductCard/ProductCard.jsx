@@ -14,7 +14,7 @@ const ProductCard = ({state, ...props}) => {
             <div className={ s.container }>
                 <div className={ s.header }>
                     <Link to={ props.link } className={ s.imageWrapper }>
-                        <img src={ state.imageLink ?? imagePlaceholder } alt={ state.title } />
+                        <img src={ state.images[0]?.link ?? imagePlaceholder } alt={ state.title } />
                     </Link>
                     {
                         state.discount

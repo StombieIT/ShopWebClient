@@ -2,21 +2,20 @@ import s from "./Comments.module.css"
 import Comment from "../Comment/Comment"
 import PreLoader from "../PreLoader/PreLoader"
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary"
-import TextAreaButton from "../TextAreaButton/TextAreaButton"
+import CommentSection from "../CommentSection/CommentSection"
 
 const Comments = ({state, ...props}) => {
     return <div className={ s.comments }>
         {
             props.user.isSignedIn
             && <div className={ s.block }>
-                <TextAreaButton
+                <CommentSection
                     placeholder="Комментарий"
                     initialValue=""
-                    onSubmit={ value => props.pushComment(value) }
+                    onSubmit={ ({value, rating}) => props.pushComment({text: value, rating}) }
+                    buttonText="Отправить"
                     rollBackOnSubmit
-                >
-                    Отправить
-                </TextAreaButton>
+                />
             </div>
         }
         {
@@ -25,7 +24,7 @@ const Comments = ({state, ...props}) => {
                     key={ comment.id }
                     state={ comment }
                     ableToManipulate={ comment.author.id === props.user.id }
-                    updateComment={ text => props.updateComment(comment.id, text) }
+                    updateComment={ ({text, rating}) => props.updateComment({commentId: comment.id, text, rating}) }
                     deleteComment={ () => props.deleteComment(comment.id) }
                 />)
         }

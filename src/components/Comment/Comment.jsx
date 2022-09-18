@@ -4,10 +4,9 @@ import deleteButton from "./delete.svg"
 import closeButton from "./close.svg"
 import avatarPlaceholder from "./avatarPlaceholder.jpg"
 import { useState } from "react"
-import ButtonPrimary from "../ButtonPrimary/ButtonPrimary"
-import { useEffect, useRef } from "react"
-import TextAreaButton from "../TextAreaButton/TextAreaButton"
+import CommentSection from "../CommentSection/CommentSection"
 import { memo } from "react"
+import RatingBar from "../RatingBar/RatingBar"
 
 const Comment = ({state, ...props}) => {
     
@@ -28,8 +27,8 @@ const Comment = ({state, ...props}) => {
         setEditMode(false)
     }
 
-    const onSubmit = value =>
-        props.updateComment(value)
+    const onSubmit = ({value, rating}) =>
+        props.updateComment({text: value, rating})
             .then(response => setEditMode(false))
 
     return <div className={ s.comment }>
@@ -65,16 +64,19 @@ const Comment = ({state, ...props}) => {
                     </div>
                 }
             </div>
+            {
+                !editMode && <RatingBar rating={ state.rating } /> 
+            }
             <div className={ s.text }>
                 {
                     editMode
                     ? <>
-                        <TextAreaButton
+                        <CommentSection
                             onSubmit={ onSubmit }
                             initialValue={ state.text }
-                        >
-                            Отправить
-                        </TextAreaButton>
+                            initialRating={ state.rating }
+                            buttonText="Отправить"
+                        />
                     </>
                     : state.text
                 }

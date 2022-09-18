@@ -6,7 +6,7 @@ const
     SET_PRODUCT_IN_PROCCESS = "SET_PRODUCT_IN_PROCCESS",
     SET_PRODUCT_COMMENTS_IN_PROCCESS = "SET_PRODUCT_COMMENTS_IN_PROCCESS",
     ADD_PRODUCT_COMMENTS = "ADD_PRODUCT_COMMENTS",
-    UPDATE_PRODUCT_COMMENT_TEXT = "UPDATE_PRODUCT_COMMENT_TEXT",
+    UPDATE_PRODUCT_COMMENT = "UPDATE_PRODUCT_COMMENT",
     SET_PRODUCT_COMMENT_IN_PROCCESS = "SET_PRODUCT_COMMENT_IN_PROCCESS",
     DELETE_PRODUCT_COMMENT = "DELETE_PRODUCT_COMMENT",
     PUSH_PRODUCT_COMMENT = "PUSH_PRODUCT_COMMENT"
@@ -41,7 +41,7 @@ const productReducer = (state = initialState, action) => {
             }
         case SET_PRODUCT_IN_PROCCESS:
             return {...state, inProccess: action.inProccess}
-        case UPDATE_PRODUCT_COMMENT_TEXT:
+        case UPDATE_PRODUCT_COMMENT:
             return {
                 ...state,
                 comments: {
@@ -51,7 +51,7 @@ const productReducer = (state = initialState, action) => {
                         .pageItems
                         .map(comment =>
                             comment.id === action.commentId
-                            ? {...comment, text: action.text}
+                            ? {...comment, text: action.text, rating: action.rating}
                             : comment
                         )
                 }
@@ -101,7 +101,12 @@ export const toggleProductActionCreator = product => ({type: TOGGLE_PRODUCT, pro
 export const setProductInProccessActionCreator = inProccess => ({type: SET_PRODUCT_IN_PROCCESS, inProccess})
 export const addProductCommentsActionCreator = comments => ({type: ADD_PRODUCT_COMMENTS, comments})
 export const setProductCommentsInProccessActionCreator = inProccess => ({type: SET_PRODUCT_COMMENTS_IN_PROCCESS, inProccess})
-export const setProductCommentTextActionCreator = (commentId, text) => ({type: UPDATE_PRODUCT_COMMENT_TEXT, commentId, text})
+export const updateProductCommentActionCreator = ({commentId, text, rating}) => ({
+    type: UPDATE_PRODUCT_COMMENT,
+    commentId,
+    text,
+    rating
+})
 export const setProductCommentInProccessActionCreator = (commentId, inProccess) => ({type: SET_PRODUCT_COMMENT_IN_PROCCESS, commentId, inProccess})
 export const deleteProductCommentActionCreator = commentId => ({type: DELETE_PRODUCT_COMMENT, commentId})
 export const pushProductCommentActionCreator = comment => ({type: PUSH_PRODUCT_COMMENT, comment})
@@ -109,10 +114,9 @@ export const pushProductCommentActionCreator = comment => ({type: PUSH_PRODUCT_C
 export const loadProductCommentsThunk = (dispatch, getState) => {
     dispatch(setProductCommentsInProccessActionCreator(true))
     productApi.getComments(getState().product.id, getState().product.comments.page + 1)
-        .then(response => {
-            debugger
+        .then(response =>
             dispatch(addProductCommentsActionCreator(response.data))
-        })
+        )
         .finally(() => dispatch(setProductCommentsInProccessActionCreator(false)))
 }
 
@@ -125,10 +129,10 @@ export const loadProductThunkCreator = productId => dispatch => {
         .then(response => dispatch(setProductInProccessActionCreator(false)))
 }
 
-export const updateProductCommentThunkCreator = (commentId, text) => dispatch =>
+export const updateProductCommentThunkCreator = ({commentId, text, rating}) => dispatch =>
     Promise.all([dispatch(setProductCommentInProccessActionCreator(commentId, true))])
-    .then(response => productApi.updateComment(commentId, text))
-    .then(response => dispatch(setProductCommentTextActionCreator(commentId, text)))
+    .then(response => productApi.updateComment({commentId, text, rating}))
+    .then(response => dispatch(updateProductCommentActionCreator({commentId, text, rating})))
     .catch(error => dispatch(addNotificationActionCreator({
         type: "error",
         text: "Не удалось обновить комментарий :/"
@@ -141,9 +145,9 @@ export const deleteProductCommentThunkCreator = commentId => dispatch =>
     .then(response => dispatch(deleteProductCommentActionCreator(commentId)))
     .catch(error => dispatch(setProductCommentInProccessActionCreator(true)))
 
-export const pushProductCommentThunkCreator = (productId, text) => dispatch =>
+export const pushProductCommentThunkCreator = ({productId, text, rating}) => dispatch =>
     productApi
-        .addComment(productId, text)
+        .addComment({productId, text, rating})
         .then(response => dispatch(pushProductCommentActionCreator(response.data)))
         .catch(error => dispatch(addNotificationActionCreator({
             type: "error",
