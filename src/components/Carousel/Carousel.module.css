@@ -1,0 +1,40 @@
+.carousel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+}
+
+.arrowBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    width: 25px;
+}
+
+.opposite {
+    transform: rotate(180deg);
+}
+
+.itemsWrapper {
+    overflow: hidden;
+}
+
+.items {
+    transition: transform 0.3s;
+    white-space: nowrap;
+}
+
+.imageWrapper {
+    overflow: hidden;
+    border-radius: 7px;
+    height: 150px;
+    display: inline-block;
+}
+
+.imageWrapper > img {
+    height: 100%;
+}

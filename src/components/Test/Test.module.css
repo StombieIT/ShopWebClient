@@ -43,3 +43,22 @@
         animation-timing-function: linear;
     }
 }
+
+.imageLabel {
+    border: 1px dashed #9c9c9c;
+    transition: 0.3s;
+    height: 100px;
+    display: block;
+}
+
+.imageLabel > img {
+    height: inherit;
+}
+
+.onDrag {
+    border-radius: 1px solid #0E6DFD;
+}
+
+.fileInput {
+    display: none;
+}
