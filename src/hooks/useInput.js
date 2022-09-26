@@ -1,12 +1,25 @@
 import { useEffect } from "react"
 import { useState } from "react"
 
+const defaultInitialValue = type => {
+    switch (type) {
+        case "text":
+        case "password":
+            return ""
+        case "file":
+            return []
+        default:
+            throw new Error("Type of input must be either of 'text', 'password', 'file'")
+    }
+}
+
 const useInput = ({
     type,
     name,
-    initialValue,
+    initialValue = defaultInitialValue(type),
     validators = []
 }) => {
+
     const [value, setValue] = useState(initialValue)
     const [errors, setErrors] = useState([])
     const [isTouched, setIsTouched] = useState(false)
@@ -24,7 +37,7 @@ const useInput = ({
     }, [value])
 
     useEffect(() => {
-        setIsDirty(errors.length !== 0 && isTouched)
+        setIsDirty(errors.length !== 0 || !isTouched)
     }, [isTouched, errors])
 
     let inputInformation = {
