@@ -50,13 +50,15 @@ const Test = ({}) => {
         "https://famt.ru/wp-content/uploads/2019/05/k-chemu-snitsya-svezhiy-hleb-tolkovanie-snovideniya.jpg",
         "https://baikal24.ru/public/images/upload/image1652856990920.jpg",
         "https://get.wallhere.com/photo/food-bread-basket-baking-bakery-rolls-grass-family-baked-goods-rye-bread-brown-bread-whole-grain-poppy-seeds-slices-619411.jpg",
-        "https://media.farandwide.com/ba/e6/bae60ab30bf14b1d88c212b342098de0.jpg"
+        "https://media.farandwide.com/ba/e6/bae60ab30bf14b1d88c212b342098de0.jpg",
+        "https://catherineasquithgallery.com/uploads/posts/2021-02/1613638687_36-p-fon-dlya-prezentatsii-khleb-51.jpg",
+        "https://upbaby.ru/wp-content/uploads/2019/03/chernyj-hleb.jpg"
     ]
     return <Carousel
         items={ links }
         itemWidth={ 100 }
         itemMargin={ 7 }
-        limit={ 4 }
+        limit={ 3 }
     />
 }
 

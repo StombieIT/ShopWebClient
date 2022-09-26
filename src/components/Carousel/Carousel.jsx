@@ -12,17 +12,21 @@ const Carousel = ({
     const [from, setFrom] = useState(0)
 
     const onLeftArrowClick = () => {
-        if (from - 1 >= 0)
-            setFrom(from - 1)
+        if (from - limit >= 0)
+            setFrom(from - limit)
+        else if (from > 0)
+            setFrom(0)
     }
 
     const onRightArrowClick = () => {
-        if (from + limit < items.length)
-            setFrom(from + 1)
+        if (from + limit + limit < items.length)
+            setFrom(from + limit)
+        else if (from < items.length - limit)
+            setFrom(items.length - limit)
     }
 
     return <div className={ styles.carousel }>
-        <div className={ styles.arrowBlock } onClick={ onLeftArrowClick }>
+        <div className={ [styles.arrowBlock, from === 0 && styles.disabled].join(" ") } onClick={ onLeftArrowClick }>
             <img src={ rightArrow } alt={ rightArrow } className={ [styles.arrow, styles.opposite].join(" ") } />
         </div>
         <div className={ styles.itemsWrapper } style={ {width: `${itemWidth * limit}px`} }>
@@ -34,7 +38,7 @@ const Carousel = ({
                 }
             </div>
         </div>
-        <div className={ styles.arrowBlock } onClick={ onRightArrowClick }>
+        <div className={ [styles.arrowBlock, from === items.length - limit && styles.disabled].join(" ") } onClick={ onRightArrowClick }>
             <img src={ rightArrow } alt={ rightArrow } className={ styles.arrow } />
         </div>
     </div>
