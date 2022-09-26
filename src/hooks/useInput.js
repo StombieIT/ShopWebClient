@@ -15,7 +15,7 @@ const useInput = ({
 
     useEffect(() => {
         let newErrors = []
-        for (const validator in validators) {
+        for (const validator of validators) {
             const validationError = validator(value)
             // If validator has returned an error
             if (validationError)
