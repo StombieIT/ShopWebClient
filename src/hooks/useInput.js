@@ -37,7 +37,10 @@ const useInput = ({
                 if (!isTouched)
                     setIsTouched(true)
             }
-        }
+        },
+        errors,
+        isTouched,
+        isDirty
     }
 
     switch (type) {
