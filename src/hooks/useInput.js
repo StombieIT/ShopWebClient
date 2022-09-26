@@ -7,7 +7,6 @@ const useInput = ({
     initialValue,
     validators = []
 }) => {
-
     const [value, setValue] = useState(initialValue)
     const [errors, setErrors] = useState([])
     const [isTouched, setIsTouched] = useState(false)
@@ -25,8 +24,7 @@ const useInput = ({
     }, [value])
 
     useEffect(() => {
-        if (!isDirty && errors.length !== 0 && isTouched)
-            setIsDirty(true)
+        setIsDirty(errors.length !== 0 && isTouched)
     }, [isTouched, errors])
 
     let inputInformation = {
