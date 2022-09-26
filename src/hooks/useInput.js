@@ -67,3 +67,5 @@ const useInput = ({
 
     return inputInformation
 }
+
+export default useInput
