@@ -1,7 +1,5 @@
-import { useState } from "react"
-import { Transition } from "react-transition-group"
 import styles from "./Test.module.css"
-import CommentSection from "../CommentSection/CommentSection"
+import ProductForm from "../ProductForm/ProductForm"
 
 // const Test = ({data = [img1, img2, dio]}) => {
     
@@ -53,14 +51,9 @@ const classes = {
 // }
 
 const Test = ({}) => {
-    return <div className={ styles.block }>
-        <CommentSection
-            initialValue=""
-            initialRating={ 1 }
-            onSubmit={ (value, rating) => console.log(value, rating) }
-            placeholder="Комментарий"
-            buttonText="Отправить"
-            rollbackOnSubmit
+    return <div>
+        <ProductForm
+            onSubmit={ () => {} }
         />
     </div>
 }
