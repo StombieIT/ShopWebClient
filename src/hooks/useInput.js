@@ -69,6 +69,7 @@ const useInput = ({
         case "file":
             inputInformation = {
                 ...inputInformation,
+                value,
                 props: {
                     ...inputInformation.props,
                     onChange: evt => setValue([...evt.target.files]) // ???

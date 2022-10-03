@@ -51,9 +51,14 @@ const classes = {
 // }
 
 const Test = ({}) => {
+    const handleSubmit = fData => {
+        for (const [key, value] of fData.entries()) {
+            console.log(key + " " + value)
+        }
+    }
     return <div>
         <ProductForm
-            onSubmit={ () => {} }
+            onSubmit={ handleSubmit }
         />
     </div>
 }
